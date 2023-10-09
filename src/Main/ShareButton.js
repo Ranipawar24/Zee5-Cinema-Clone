@@ -43,6 +43,7 @@ export default function ShareButton() {
                 border: "none",
                 padding: "5px",
                 cursor: "pointer",
+                color: "#4267B2",
               }}
               url="http://localhost:3000/"
             >
@@ -55,6 +56,7 @@ export default function ShareButton() {
                 border: "none",
                 padding: "5px",
                 cursor: "pointer",
+                color: "#962fbf",
               }}
               url="http://localhost:3000/"
             >
@@ -63,10 +65,11 @@ export default function ShareButton() {
 
             <WhatsappShareButton
               style={{
-                fontSize: "10px",
+                fontSize: "14px",
                 border: "none",
                 padding: "5px",
                 cursor: "pointer",
+                color: "#075e54",
               }}
               url="http://localhost:3000/"
             >
@@ -78,6 +81,7 @@ export default function ShareButton() {
                 border: "none",
                 padding: "5px",
                 cursor: "pointer",
+                color: "red",
               }}
               url="http://localhost:3000/"
             >

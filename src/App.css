@@ -410,3 +410,7 @@ background-color: purple;
   font-size: 15px;
   margin-left: 15px;
 }
+.login-btn:hover {
+  color: #000000;
+  background-color: #fff;
+}

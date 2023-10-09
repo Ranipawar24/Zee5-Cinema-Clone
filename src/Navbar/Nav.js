@@ -26,7 +26,6 @@ import {
   AccordionItem,
 } from "@chakra-ui/react";
 import { BiSolidCrown } from "react-icons/bi";
-import zIndex from "@mui/material/styles/zIndex";
 
 export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
   const searchStyle = {
@@ -144,7 +143,11 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
               <NavLink to="/BuyPlan">
                 <Button className="BuyPlanButton">
                   <BiSolidCrown
-                    style={{ paddingRight: "5px", fontSize: "16px" }}
+                    style={{
+                      paddingRight: "5px",
+                      fontSize: "16px",
+                      borderRadius: "5px",
+                    }}
                   />
                   BUY PLAN
                 </Button>
@@ -268,6 +271,20 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                     className="navLink"
                   >
                     <ListItem>Movies</ListItem>
+                  </NavLink>
+                  <NavLink
+                    to="NoResult"
+                    style={navLinkStyle}
+                    className="navLink"
+                  >
+                    <ListItem>Premium</ListItem>
+                  </NavLink>
+                  <NavLink
+                    to="/TVShows"
+                    style={navLinkStyle}
+                    className="navLink"
+                  >
+                    <ListItem>Web Series</ListItem>
                   </NavLink>
 
                   <ListItem onClick={toggleDropDown}>
@@ -576,9 +593,11 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                   // Conditionally render the login button
                   <NavLink to="/Login">
                     <Button
+                      className="login-btn"
                       mr={30}
                       sx={{
                         bg: "#0F0617",
+                        padding: "8px",
                         color: "white",
                         width: "70px",
                         border: "1px white solid",
@@ -587,6 +606,7 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                         fontSize: "Bold",
                         cursor: "pointer",
                         marginTop: "2px",
+                        transition: "background-color .3s ease-in-out",
                       }}
                     >
                       Login
