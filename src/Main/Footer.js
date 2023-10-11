@@ -46,18 +46,21 @@ export default function Footer() {
             </Container>
 
             <Flex style={{ color: "white" }}>
-              <h3 style={{ marginLeft: "20%" }}>Connect with us</h3>
+              <h3
+                style={{ marginLeft: window.innerWidth < 700 ? "20px" : "20%" }}
+              >
+                Connect with us
+              </h3>
               <div>
                 <Link to="https://m.facebook.com/ZEE5/events/">
                   <CiFacebook
                     style={{
-                      width: "40px",
-                      height: "40px",
-                      marginTop: "10px",
-                      marginLeft: "10px",
+                      width: "30px",
+                      height: "30px",
+                      marginTop: "15px",
+                      marginLeft: window.innerWidth < 700 ? "10px" : "30px",
                       borderRadius: "50%",
                       color: "white",
-                      backgroundColor: "rgb(42, 41, 41)",
                     }}
                   />
                 </Link>
@@ -66,13 +69,12 @@ export default function Footer() {
                 <Link to="https://www.instagram.com/zee5/">
                   <BiLogoInstagram
                     style={{
-                      width: "40px",
-                      height: "40px",
-                      marginTop: "10px",
-                      marginLeft: "10px",
+                      width: "30px",
+                      height: "30px",
+                      marginTop: "15px",
+                      marginLeft: window.innerWidth < 700 ? "10px" : "30px",
                       borderRadius: "50%",
                       color: "white",
-                      backgroundColor: "rgb(42, 41, 41)",
                     }}
                   />
                 </Link>
@@ -81,13 +83,12 @@ export default function Footer() {
                 <Link to="https://twitter.com/ZEE5India?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
                   <CiTwitter
                     style={{
-                      width: "40px",
-                      height: "40px",
-                      marginTop: "10px",
-                      marginLeft: "10px",
+                      width: "30px",
+                      height: "30px",
+                      marginTop: "15px",
+                      marginLeft: window.innerWidth < 700 ? "10px" : "30px",
                       borderRadius: "50%",
                       color: "white",
-                      backgroundColor: "rgb(42, 41, 41)",
                     }}
                   />
                 </Link>
@@ -96,13 +97,12 @@ export default function Footer() {
                 <Link to="https://www.youtube.com/channel/UCXOgAl4w-FQero1ERbGHpXQ">
                   <AiOutlineYoutube
                     style={{
-                      width: "40px",
-                      height: "40px",
-                      marginTop: "10px",
-                      marginLeft: "10px",
+                      width: "30px",
+                      height: "30px",
+                      marginTop: "15px",
+                      marginLeft: window.innerWidth < 700 ? "10px" : "30px",
                       borderRadius: "50%",
                       color: "white",
-                      backgroundColor: "rgb(42, 41, 41)",
                     }}
                   />
                 </Link>
@@ -134,11 +134,13 @@ export default function Footer() {
                 Preference
               </div>
             </Flex>
-            <div style={{ marginTop: "40px", color: "grey" }}>
+            <div style={{ marginTop: "40px", color: "grey", fontSize: "14px" }}>
               Best viewed on Google Chrome 80+, Microsoft Edge 81+, Mozilla
               Firefox 75+, Safari 5.1.5+
             </div>
-            <div style={{ color: "grey", marginBottom: "20px" }}>
+            <div
+              style={{ color: "grey", marginBottom: "20px", fontSize: "14px" }}
+            >
               Copyright © 2023 Zee Entertainment Enterprises Ltd. All rights
               reserved.
             </div>

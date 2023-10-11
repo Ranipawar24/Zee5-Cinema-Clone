@@ -81,7 +81,7 @@ export default function Watch() {
       {smallerScreen ? (
         <>
           {itemId.video_url ? (
-            <Flex marginTop="8rem" marginLeft="2rem">
+            <Flex marginTop="8rem" marginLeft="0px">
               <video
                 ref={videoRef}
                 width="100%"
@@ -95,13 +95,11 @@ export default function Watch() {
           ) : (
             <p>Loading...</p>
           )}
-          <Container sx={{ color: "white" }}>
-            <h2 style={{ marginLeft: "50px" }}>{itemId.title}</h2>
+          <Container sx={{ color: "white", marginLeft: "10px" }}>
+            <h2>{itemId.title}</h2>
             <ul>
               <Flex>
-                <li style={{ marginLeft: "30px", marginRight: "40px" }}>
-                  U/A 16+
-                </li>
+                <li style={{ marginRight: "40px" }}>U/A 16+</li>
                 <li style={{ color: "white", marginRight: "40px" }}>
                   {itemId.createdAt ? itemId.createdAt.substring(0, 4) : "N/A"}
                 </li>
@@ -119,7 +117,7 @@ export default function Watch() {
                 border: "none",
                 fontSize: "20px",
                 borderRadius: "8px",
-                marginLeft: "50px",
+
                 ":hover": {
                   backgroundColor: "#8230c6",
                   border: "2px solid #8230c6",
@@ -139,7 +137,7 @@ export default function Watch() {
               Watchlist
             </Button>
             <Flex>
-              <p style={{ marginLeft: "50px" }}>Genre : </p>
+              <p>Genre : </p>
               <p style={{ marginLeft: "5px", color: "#A785FF" }}>
                 {itemId.keywords?.length > 0
                   ? itemId.keywords.map((keyword, index) => (
@@ -155,34 +153,38 @@ export default function Watch() {
           </Container>
           <Container>
             <div
-              style={{ color: "white", fontSize: "15px", marginLeft: "50px" }}
+              style={{ color: "white", fontSize: "15px", marginLeft: "10px" }}
             >
               {itemId.description}
             </div>
           </Container>
-          <Flex>
+          <Flex flexDirection="column">
             <p
               style={{
                 color: "#A785FF",
-                marginLeft: "50px",
+                marginLeft: "10px",
+
                 marginRight: "10px",
               }}
             >
               Cast:
             </p>
-            <p style={{ color: "white" }}>
+            <p style={{ color: "white", marginLeft: "10px" }}>
               {itemId.cast ? itemId.cast.join(" , ") : "N/A"}
             </p>
             <p
               style={{
                 color: "#A785FF",
-                marginLeft: "50px",
+                marginLeft: "10px",
+
                 marginRight: "10px",
               }}
             >
               Director:
             </p>
-            <p style={{ color: "white" }}>{itemId.director}</p>
+            <p style={{ color: "white", marginLeft: "10px" }}>
+              {itemId.director}
+            </p>
           </Flex>
           <ShortFilm />
         </>
@@ -190,13 +192,7 @@ export default function Watch() {
         <>
           {itemId.video_url ? (
             <Flex marginTop="8rem" marginLeft="40px">
-              <video
-                ref={videoRef}
-                width="60%"
-                height="120%"
-                marginLeft="40px"
-                controls
-              >
+              <video ref={videoRef} width="60%" height="120%" controls>
                 <source src={itemId.video_url} type="video/mp4" />
               </video>
               <Container style={{ height: "20px", top: "0" }}>
@@ -295,7 +291,7 @@ export default function Watch() {
               {itemId.description}
             </div>
           </Container>
-          <Flex>
+          <Flex flexDirection="column">
             <p
               style={{
                 color: "#A785FF",
@@ -306,7 +302,9 @@ export default function Watch() {
             >
               Cast:
             </p>
-            <p style={{ color: "white", marginTop: "30px" }}>
+            <p
+              style={{ color: "white", marginTop: "30px", marginLeft: "50px" }}
+            >
               {itemId.cast ? itemId.cast.join(" , ") : "N/A"}
             </p>
             <p
@@ -319,7 +317,9 @@ export default function Watch() {
             >
               Director:
             </p>
-            <p style={{ color: "white", marginTop: "30px" }}>
+            <p
+              style={{ color: "white", marginTop: "30px", marginLeft: "50px" }}
+            >
               {itemId.director}
             </p>
           </Flex>

@@ -10,6 +10,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Center,
 } from "@chakra-ui/react";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink, Link, useLocation } from "react-router-dom";
@@ -131,9 +132,17 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
   return (
     <>
       {smallerScreen ? (
-        <Container style={{ marginTop: "20px" }}>
-          <Flex justifyContent="space-between">
-            <Flex>
+        <Container
+          style={{ zIndex: "10000" }}
+          p="10px"
+          bg="#0F0617"
+          color="white"
+          position="fixed"
+          top="0"
+          minWidth="99%"
+        >
+          <Flex justifyContent="space-between" alignItems={"center"}>
+            <Flex alignItems={"center"}>
               <img
                 src={Zee}
                 alt="zee logo"
@@ -154,7 +163,16 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
               </NavLink>
             </Flex>
           </Flex>
-          <Flex style={{ overflowX: "auto", whiteSpace: "nowrap" }}>
+          <Flex
+            style={{
+              overflowX: "auto",
+              whiteSpace: "nowrap",
+
+              width: "100vw",
+              paddingBottom: "5px",
+            }}
+            alignItems={"center"}
+          >
             <NavLink to="/" style={{ color: "white", textDecoration: "none" }}>
               <Container className="navButton">Home</Container>
             </NavLink>
@@ -171,49 +189,49 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
               <Container className="navButton">Movies</Container>
             </NavLink>
             <NavLink
-              to="/TvShows"
+              to="/WebSeries"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Web Series</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/Premium"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Premium</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/News"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">News</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/Music"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Music</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/Live"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Live</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/Channels"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Channels</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/Kids"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Kids</Container>
             </NavLink>
             <NavLink
-              to="/NoResult"
+              to="/Eduaruaa"
               style={{ color: "white", textDecoration: "none" }}
             >
               <Container className="navButton">Eduaruaa</Container>
@@ -225,6 +243,345 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
               <Container className="navButton">My List</Container>
             </NavLink>
           </Flex>
+          {/* <HamburgerIcon
+            ref={menuRef}
+            onClick={handleMenuToggle}
+            fontSize={25}
+            cursor="pointer"
+            textDecoration="none"
+            color="white"
+            marginTop="5px"
+          />
+          */}
+          {menuOpen && (
+            <div className="menu">
+              <NavLink
+                to="/"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <div
+                  style={{
+                    paddingLeft: "50px",
+                    fontWeight: "bold",
+                    paddingBottom: "20px",
+                    paddingTop: "20px",
+                    marginBottom: "20px",
+                    backgroundColor: "rgba(41, 37, 45, 0.6)",
+                    borderRadius: "10px",
+                  }}
+                >
+                  Home
+                </div>
+              </NavLink>
+              <hr className="divider" />
+              <Accordion defaultIndex={[0]} allowMultiple>
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton
+                      style={{
+                        backgroundColor: "#0F0617",
+                        border: "none",
+                      }}
+                    >
+                      <Box
+                        flex="1"
+                        style={{
+                          backgroundColor: "#0F0617",
+                          marginLeft: "25px",
+                          color: "grey",
+                          fontSize: "15px",
+                          textAlign: "left",
+                          fontFamily: "Noto Sans, sans-serif",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Explore
+                      </Box>
+                      <AccordionIcon style={{ color: "white" }} />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <ul className="ProfileList">
+                      <NavLink
+                        to="/TvShows"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Tv Shows
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/Movies"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Movies
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Premium
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/AllShows"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Web Series
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          News
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Music
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Kids
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Songs
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Video
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Channels
+                        </li>
+                      </NavLink>
+                    </ul>
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+              <hr className="divider" />
+              <Accordion defaultIndex={[0]} allowMultiple>
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton
+                      style={{
+                        backgroundColor: "#0F0617",
+                        border: "none",
+                      }}
+                    >
+                      <Box
+                        flex="1"
+                        style={{
+                          backgroundColor: "#0F0617",
+                          marginLeft: "25px",
+                          color: "grey",
+                          fontSize: "15px",
+                          textAlign: "left",
+                          fontFamily: "Noto Sans, sans-serif",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Settings
+                      </Box>
+                      <AccordionIcon style={{ color: "white" }} />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <ul className="ProfileList">
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Parental Control
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Activate TV
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Reset Settings to default
+                        </li>
+                      </NavLink>
+                      <hr className="divider" />
+                    </ul>
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+              <NavLink
+                to="/NoResult"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <div
+                  style={{
+                    paddingLeft: "50px",
+                    fontWeight: "bold",
+                    paddingBottom: "20px",
+                    paddingTop: "20px",
+                    marginBottom: "20px",
+                    ":hover": {
+                      backgroundColor: "rgba(41, 37, 45, 0.6)",
+                    },
+                    borderRadius: "10px",
+                  }}
+                >
+                  Refer and earn Discount
+                </div>
+              </NavLink>
+              <hr className="divider" />
+              <Accordion defaultIndex={[0]} allowMultiple>
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton
+                      style={{
+                        backgroundColor: "#0F0617",
+                        border: "none",
+                      }}
+                    >
+                      <Box
+                        flex="1"
+                        style={{
+                          backgroundColor: "#0F0617",
+                          marginLeft: "25px",
+                          color: "grey",
+                          fontSize: "15px",
+                          textAlign: "left",
+                          fontFamily: "Noto Sans, sans-serif",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Info
+                      </Box>
+                      <AccordionIcon style={{ color: "white" }} />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4}>
+                    <ul className="ProfileList">
+                      <NavLink
+                        to="/AboutUs"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          About us
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/TermOfUse"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Term of Use
+                        </li>
+                      </NavLink>
+                      <NavLink
+                        to="/NoResult"
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <li
+                          className="profileItem"
+                          style={{ paddingLeft: "35px" }}
+                        >
+                          Privacy Policy
+                        </li>
+                      </NavLink>
+                      <hr className="divider" />
+                    </ul>
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+              <div
+                style={{
+                  fontSize: "11px",
+                  color: "grey",
+                  paddingLeft: "130px",
+                  paddingBottom: "30px",
+                }}
+              >
+                Version 3.14.4
+              </div>
+            </div>
+          )}
         </Container>
       ) : (
         <>
@@ -235,7 +592,7 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
             position="fixed"
             top="0"
             minWidth="99%"
-            zIndex="1000"
+            zIndex="10000"
           >
             <Flex
               as="nav"
@@ -273,14 +630,14 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                     <ListItem>Movies</ListItem>
                   </NavLink>
                   <NavLink
-                    to="NoResult"
+                    to="/Premium"
                     style={navLinkStyle}
                     className="navLink"
                   >
                     <ListItem>Premium</ListItem>
                   </NavLink>
                   <NavLink
-                    to="/TVShows"
+                    to="/WebSeries"
                     style={navLinkStyle}
                     className="navLink"
                   >
@@ -305,23 +662,6 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                           className="ul"
                           style={{ overscrollBehavior: "none" }}
                         >
-                          <NavLink
-                            to="/NoResult"
-                            style={{ color: "white", textDecoration: "none" }}
-                          >
-                            <li
-                              className="listItem"
-                              style={{ marginTop: "20px" }}
-                            >
-                              Premium
-                            </li>
-                          </NavLink>
-                          <NavLink
-                            to="/AllShows"
-                            style={{ color: "white", textDecoration: "none" }}
-                          >
-                            <li className="listItem">Web Series</li>
-                          </NavLink>
                           <NavLink
                             to="/NoResult"
                             style={{ color: "white", textDecoration: "none" }}

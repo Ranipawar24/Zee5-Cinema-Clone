@@ -56,7 +56,7 @@ function LargerCarousel() {
         <>
           <div
             style={{
-              marginTop: "1rem",
+              marginTop: "7rem",
               zIndex: "0",
               paddingLeft: "5px",
               paddingRight: "10px",
