@@ -25,7 +25,7 @@ const FetchProvider = ({ children }) => {
             }
           );
           const data = await response.json();
-          console.log(data);
+
           const result = data.data;
           setApi(result);
           localStorage.setItem(
