@@ -53,7 +53,7 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
                 sign: responseData,
               })
             );
-          
+
             setError("Login Successfully");
             setColor("green");
             setLogin(true);
@@ -87,7 +87,7 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
       <NavLink to="/">
         <CloseIcon
           style={{
-            color: "purple",
+            color: "red",
             borderRadius: "50%",
             marginLeft: "95%",
             height: "20px",
@@ -98,7 +98,7 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
       <form style={{ border: "2px solid white", borderRadius: "10px" }}>
         <h2 style={{ marginLeft: "25%" }}> Login to ZEE5</h2>
 
-        <h4 style={{ color: "#363636", marginLeft: "8%", marginRight: "5%" }}>
+        <h4 style={{ color: "#666", marginLeft: "8%", marginRight: "5%" }}>
           Login to continue enjoying uninterrupted video and personalised
           experience.
         </h4>
@@ -172,15 +172,15 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
                 border: "2px solid plum",
                 marginTop: "25px",
                 color: "white",
-                background: "plum",
+                background: "#8230c6",
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "purple";
-                e.target.style.border = "1px solid purple";
+                e.target.style.backgroundColor = "#bd79f4";
+                e.target.style.border = "1px solid #bd79f4";
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "plum";
-                e.target.style.border = "2px solid plum";
+                e.target.style.backgroundColor = "#8230c6";
+                e.target.style.border = "2px solid #bd79f4";
               }}
               onClick={handleLogin}
             >
@@ -191,7 +191,7 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
               <div
                 style={{ marginLeft: "25%", marginTop: "35px", color: "black" }}
               >
-                New to ZEE5? <span style={{ color: "plum" }}>Register</span>
+                New to ZEE5? <span style={{ color: "#8230c6" }}>Register</span>
               </div>
             </Link>
           </>
