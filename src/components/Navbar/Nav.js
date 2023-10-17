@@ -69,7 +69,6 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
-
   };
 
   useEffect(() => {
@@ -162,7 +161,18 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                 </Button>
               </NavLink>
             </Flex>
+            <Flex>
+              <NavLink
+                to="/SearchCard"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <Box className="searchBtn">
+                  <SearchIcon />
+                </Box>
+              </NavLink>
+            </Flex>
           </Flex>
+
           <Flex
             style={{
               overflowX: "auto",

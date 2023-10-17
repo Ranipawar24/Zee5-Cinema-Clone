@@ -423,3 +423,9 @@ background-color: purple;
   color: #000000;
   background-color: #fff;
 }
+.searchBtn {
+  margin-right: 35px;
+  background-color: #0f0617;
+  margin-left: 0px;
+  padding-left: 80px;
+}
