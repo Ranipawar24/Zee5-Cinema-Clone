@@ -155,6 +155,7 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                       paddingRight: "5px",
                       fontSize: "16px",
                       borderRadius: "5px",
+                      fontWeight: "bold",
                     }}
                   />
                   BUY PLAN
@@ -171,6 +172,17 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                 </Box>
               </NavLink>
             </Flex>
+            <div>
+              <HamburgerIcon
+                className="Hmenu"
+                ref={menuRef}
+                onClick={handleMenuToggle}
+                fontSize={24}
+                cursor="pointer"
+                textDecoration="none"
+                color="white"
+              />
+            </div>
           </Flex>
 
           <Flex
@@ -253,16 +265,7 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
               <Container className="navButton">My List</Container>
             </NavLink>
           </Flex>
-          {/* <HamburgerIcon
-            ref={menuRef}
-            onClick={handleMenuToggle}
-            fontSize={25}
-            cursor="pointer"
-            textDecoration="none"
-            color="white"
-            marginTop="5px"
-          />
-          */}
+
           {menuOpen && (
             <div className="menu">
               <NavLink
