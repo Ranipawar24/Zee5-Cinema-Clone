@@ -2,9 +2,9 @@ import { CloseIcon } from "@chakra-ui/icons";
 import { Button, Container } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, json } from "react-router-dom";
 
-export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
+const Login = ({ setLoggedInStatus, setUserName }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,14 +14,16 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
   const handlePassword = (event) => {
     setPassword(event.target.value);
   };
+
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
 
   const handleLogin = (event) => {
     event.preventDefault();
+
     if (!email || !password) {
-      setError("All Fields must be filled");
+      setError("All Field must be filled");
       setColor("red");
     } else if (!email.includes("@")) {
       setError("Email is invalid");
@@ -34,8 +36,8 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
             {
               method: "POST",
               headers: {
-                "Content-Type": "application/json", // Set content type to JSON
-                projectId: "8jf3b15onzua",
+                "Content-Type": "application/json",
+                projectId: "f104bi07c490",
               },
               body: JSON.stringify({
                 email: `${email}`,
@@ -44,21 +46,15 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
               }),
             }
           );
-
-          if (response.ok) {
-            const responseData = await response.json();
-            localStorage.setItem(
-              "sign",
-              JSON.stringify({
-                sign: responseData,
-              })
-            );
-
-            setError("Login Successfully");
+          const data = await response.json();
+          if (response.ok && data.status === "success") {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.data));
+            console.log("registration successfully");
+            setError("Login successfully");
             setColor("green");
             setLogin(true);
             setUserName(email);
-            setEMail(email);
             setLoggedInStatus(true);
           } else {
             console.error("Registration Failed");
@@ -199,4 +195,5 @@ export default function Login({ setLoggedInStatus, setEMail, setUserName }) {
       </form>
     </Container>
   );
-}
+};
+export default Login;

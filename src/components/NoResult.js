@@ -24,7 +24,7 @@ export default function () {
               letterSpacing: "2px",
             }}
           >
-            SO SORRY ....
+            SO SORRY ...
             <img
               src={sorryIcon}
               style={{ width: "50px", height: "50px", borderRadius: "50%" }}
@@ -38,12 +38,10 @@ export default function () {
               paddingTop: "50px",
             }}
           >
-            This feature is currently unavailable.
+            This feature is coming soon, stay tuned!
           </h2>
           <Link to="/">
-            <h2 style={{ textAlign: "center", paddingTop: "100px" }}>
-              Back To Home
-            </h2>
+            <h2 style={{ textAlign: "center", paddingTop: "50px" }}>GO HOME</h2>
           </Link>
         </div>
       </div>

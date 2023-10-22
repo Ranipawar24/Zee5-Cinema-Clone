@@ -6,6 +6,8 @@ import VideoSong from "./VideoSong";
 import Footer from "../components/Footer";
 import ShortFilm from "./ShortFilm";
 import { PiShareFat } from "react-icons/pi";
+import NoResult from "../components/NoResult";
+import { NavLink } from "react-router-dom";
 
 export default function Watch() {
   const [itemId, setShowItemId] = useState([]);
@@ -13,8 +15,10 @@ export default function Watch() {
 
   const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 1000);
   const videoRef = useRef(null);
+  console.log(videoRef);
 
   const { id } = useParams();
+  console.log(id, "id data");
 
   const getMovies = async () => {
     const response = await fetch(
@@ -22,11 +26,13 @@ export default function Watch() {
       {
         method: "GET",
         headers: {
-          projectId: "8jf3b15onzua",
+          projectId: "f104bi07c490",
         },
       }
     );
     const data = await response.json();
+    console.log("data:", data);
+    console.log("data video: ", data.data.video_url);
 
     setShowItemId(data.data);
 
@@ -41,10 +47,9 @@ export default function Watch() {
   }, [id]);
 
   async function addRemoveWatchList(showId) {
-    const user = localStorage.getItem("signup");
-
-    if (user) {
-      const parsedData = JSON.parse(user);
+    const token = localStorage.getItem("token");
+    console.log("userData", token);
+    if (token) {
       const response = await fetch(
         `https://academics.newtonschool.co/api/v1/ott/watchlist/like`,
         {
@@ -52,8 +57,8 @@ export default function Watch() {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${parsedData.sign.token}`,
-            projectId: "8jf3b15onzua",
+            Authorization: `Bearer ${token}`,
+            projectId: "f104bi07c490",
           },
           body: JSON.stringify({ showId: showId }),
         }
@@ -63,6 +68,7 @@ export default function Watch() {
       }
     }
   }
+
   useEffect(() => {
     const handleResize = () => {
       setSmallerScreen(window.innerWidth < 1000);
@@ -206,7 +212,31 @@ export default function Watch() {
                 <li style={{ color: "white" }}>{itemId.type?.toUpperCase()}</li>
               </Flex>
             </ul>
-            <Flex>
+            <Flex style={{ gap: "15px" }}>
+              <NavLink to="/NoResult">
+                <Button
+                  sx={{
+                    width: "150px",
+                    height: "80px",
+                    color: "white",
+                    display: "flex",
+                    backgroundColor: "rgba(41, 37, 45, 0.6)",
+                    marginTop: "0",
+                    border: "none",
+                    fontSize: "20px",
+                    borderRadius: "8px",
+                    marginLeft: "50px",
+                    cursor: "pointer",
+                    marginLeft: "50px",
+
+                    ":hover": {
+                      backgroundColor: "#8230c6",
+                    },
+                  }}
+                >
+                  <PiShareFat style={{ marginRight: "10px" }} /> Share
+                </Button>
+              </NavLink>
               <Button
                 sx={{
                   width: "150px",
@@ -218,22 +248,10 @@ export default function Watch() {
                   border: "none",
                   fontSize: "20px",
                   borderRadius: "8px",
-                  marginLeft: "50px",
-                }}
-              >
-                <PiShareFat style={{ marginRight: "10px" }} /> Share
-              </Button>
-              <Button
-                sx={{
-                  width: "150px",
-                  height: "80px",
-                  color: "white",
-                  display: "flex",
-                  backgroundColor: "rgba(41, 37, 45, 0.6)",
-                  marginTop: "0",
-                  border: "none",
-                  fontSize: "20px",
-                  borderRadius: "8px",
+                  cursor: "pointer",
+                  ":hover": {
+                    backgroundColor: "#8230c6",
+                  },
                 }}
                 onClick={() => addRemoveWatchList(itemId._id)}
               >
@@ -257,6 +275,7 @@ export default function Watch() {
                   color: "#A785FF",
                   marginTop: "40px",
                 }}
+                s
               >
                 {itemId.keywords?.length > 0
                   ? itemId.keywords.map((keyword, index) => (

@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import { FetchProvider } from "./FetchContext";
 import Home from "./pages/Home";
@@ -35,26 +35,40 @@ function App() {
   const [userName, setUserName] = useState("");
   const [Email, setEMail] = useState("");
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const setLoggedInStatus = (status) => {
     setIsLoggedIn(status);
   };
 
-  const location = useLocation();
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, [location]);
+  // const location = useLocation();
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // }, [location]);
+  const { pathname } = useLocation();
+  const showHead =
+    pathname.includes("Login") ||
+    pathname.includes("Register") ||
+    pathname.includes("BuyPlan");
 
   return (
     <>
       <FetchProvider>
-        <Nav
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-          username={userName}
-        />
+        {!showHead && (
+          <Nav
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+            username={userName}
+          />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Movies" element={<Movies />} />
@@ -74,11 +88,36 @@ function App() {
 
           <Route
             path="/Profile"
-            element={<Profile username={userName} email={Email} />}
+            element={
+              isLoggedIn ? (
+                <Profile username={userName} email={Email} />
+              ) : (
+                <Navigate />
+              )
+            }
+            username={userName}
+            email={Email}
+            // path="/Profile"
+            // element={
+            //   isLoggedIn ? (
+            //     <Profile username={userName} email={Email} />
+            //   ) : (
+            //     <Navigate />
+            //   )
+            // }
           />
-          <Route path="/Subscription" element={<Subscription />} />
-          <Route path="/Rental" element={<Rental />} />
-          <Route path="/transaction" element={<Transaction />} />
+          <Route
+            path="/Subscription"
+            element={isLoggedIn ? <Subscription /> : <Navigate />}
+          />
+          <Route
+            path="/Rental"
+            element={isLoggedIn ? <Rental /> : <Navigate />}
+          />
+          <Route
+            path="/transaction"
+            element={isLoggedIn ? <Transaction /> : <Navigate />}
+          />
           <Route path="/AboutUs" element={<AboutUS />} />
           <Route path="/TermOfUse" element={<TermOfUse />} />
           {/* No need to include Nav for /Login and /Register */}

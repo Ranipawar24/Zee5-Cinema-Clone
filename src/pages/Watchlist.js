@@ -10,9 +10,8 @@ export default function Watchlist() {
   const [isAdded, setIsAdded] = useState(true);
 
   async function getWatchList() {
-    const userInfo = localStorage.getItem("signup");
-    if (userInfo) {
-      const userDetail = JSON.parse(userInfo);
+    const token = localStorage.getItem("token");
+    if (token) {
       const response = await fetch(
         "https://academics.newtonschool.co/api/v1/ott/watchlist/like",
         {
@@ -20,16 +19,17 @@ export default function Watchlist() {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${userDetail.sign.token}`,
-            projectId: "8jf3b15onzua",
+            Authorization: `Bearer ${token}`,
+            projectId: "f104bi07c490",
           },
         }
       );
 
+      console.log("response", response);
       const data = await response.json();
-
-      if (Array.isArray(data.data?.shows)) {
-        setWatchList(data.data?.shows);
+      console.log("data i need:", data.data);
+      if (Array.isArray(data?.data?.shows)) {
+        setWatchList(data?.data?.shows);
         setLoading(false);
       } else {
         console.error("Data is not an array:", data.data.shows);
@@ -38,10 +38,9 @@ export default function Watchlist() {
   }
 
   async function addRemoveWatchList(showId) {
-    const user = localStorage.getItem("signup");
-
-    if (user) {
-      const parsedData = JSON.parse(user);
+    const token = localStorage.getItem("token");
+    // console.log("userData", token);
+    if (token) {
       const response = await fetch(
         `https://academics.newtonschool.co/api/v1/ott/watchlist/like`,
         {
@@ -49,15 +48,15 @@ export default function Watchlist() {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${parsedData.sign.token}`,
-            projectId: "8jf3b15onzua",
+            Authorization: `Bearer ${token}`,
+            projectId: "f104bi07c490",
           },
           body: JSON.stringify({ showId: showId }),
         }
       );
       if (response.ok) {
         const updatedWatchlist = isAdded
-          ? watchlist.filter((item) => item._id !== showId)
+          ? watchlist.filter((item) => item?._id !== showId)
           : [...watchlist, showId];
 
         setWatchList(updatedWatchlist);
@@ -169,7 +168,7 @@ export default function Watchlist() {
                         {item.title}
                       </div>
                       <Button
-                        onClick={() => addRemoveWatchList(item._id)}
+                        onClick={() => addRemoveWatchList(item?._id)}
                         style={{
                           top: "-90px",
                           left: "80px",
