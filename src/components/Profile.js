@@ -4,7 +4,6 @@ import Footer from "./Footer";
 import ProfileItem from "./ProfileItem";
 
 export default function Profile({ username, email }) {
-  
   return (
     <div style={{ marginTop: "8rem" }}>
       <div

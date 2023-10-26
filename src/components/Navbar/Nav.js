@@ -904,13 +904,39 @@ export default function Nav({ isLoggedIn, setIsLoggedIn, username }) {
                                         My Subscription
                                       </li>
                                     </NavLink>
-                                    <li className="profileItem">My Rentals</li>
-                                    <li className="profileItem">
-                                      My Transactions
-                                    </li>
-                                    <li className="profileItem">
-                                      Manage your devices
-                                    </li>
+                                    <NavLink
+                                      to="/NoResult"
+                                      style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <li className="profileItem">
+                                        My Rentals
+                                      </li>
+                                    </NavLink>
+                                    <NavLink
+                                      to="/NoResult"
+                                      style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <li className="profileItem">
+                                        My Transactions
+                                      </li>
+                                    </NavLink>
+                                    <NavLink
+                                      to="/NoResult"
+                                      style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <li className="profileItem">
+                                        Manage your devices
+                                      </li>
+                                    </NavLink>
                                     <li
                                       onClick={() => handleLogout()}
                                       className="profileItem"

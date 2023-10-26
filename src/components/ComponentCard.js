@@ -49,7 +49,6 @@ const ComponentCard = ({ item }) => {
                       borderRadius: "8px",
                       zIndex: "1000",
                       backgroundColor: "black",
-                     
                     }}
                   />
                 </Link>
@@ -62,15 +61,16 @@ const ComponentCard = ({ item }) => {
           <div className="box">
             <div className="image-container">
               <div className="image-overlay">
-              <Link
-              to={`/watch/${item._id}`}
-              style={{ textDecoration: "none" }}
-            >
-                <img
-                  src={item.thumbnail}
-                  alt="image.title"
-                  className="dataImage"
-                /></Link>
+                <Link
+                  to={`/watch/${item._id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <img
+                    src={item.thumbnail}
+                    alt="image.title"
+                    className="dataImage"
+                  />
+                </Link>
                 <div className="card-content">
                   <div className="image-title">
                     {item.title}
